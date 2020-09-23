@@ -14,7 +14,7 @@ function generatePassword() {
   /* alphabet, nums, and special chars are a string that will be accessed later */
   var alphaBet = 'abcdefghijklmnopqrstuvwxyz';
   var nums = '0123456789'
-  var specialChars = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  var specialChars = "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
   /* prompt the user to enter a password length */
   var pLength = prompt("How long do you want the password to be? (8 to 128)");
@@ -30,33 +30,42 @@ function generatePassword() {
   /* comfirm messages to ask the user what criteria they want */
   var yesLower = confirm("Do you want lower case letters?");
   if (yesLower==true) {
-    criteria.push(alphaBet.toLowerCase());
+    criteria.push(alphaBet.toLowerCase()); /* this will push the alphabet to the criteria */
   }
 
   var yesUpper = confirm("Do you want upper case letters?");
-  if (yesLower==true) {
+  if (yesUpper==true) {
     criteria.push(alphaBet.toUpperCase());
   }
   var yesNums = confirm("Do you want numbers?");
-  if (yesLower==true) {
+  if (yesNums==true) {
     criteria.push(nums);
   }
   var yesSpecial = confirm("Do you want special characters?");
-  if (yesLower==true) {
+  if (yesSpecial==true) {
     criteria.push(specialChars);
   }
-
-  console.log(criteria)
 
   /* if user chooses no criteria they will be asked to start again */
   if (yesUpper==false && yesLower==false && yesNums==false && yesSpecial==false) {
     alert("You must choose at least one criteria");
     generatePassword();
   }
-  
-  console.log("123");
-  return("123");
+  /* this variable will hold the password */
+  var password = '';
 
-}
+  /* a for loop will pick a random character and criteria each time for the pLength */
+  for (var i=0; i<pLength; i++) {
+      ranCriteria = criteria[Math.floor(Math.random()*criteria.length)]; /* this picks a random criteria */
+      ranChar = ranCriteria[Math.floor(Math.random()*ranCriteria.length)]; /* this picks a random character */
+      
+      password += ranChar; /* this adds the character to the password */
+    }
+  
+  return(password);
+  }
+  
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
