@@ -30,20 +30,20 @@ function generatePassword() {
   /* comfirm messages to ask the user what criteria they want */
   var yesLower = confirm("Do you want lower case letters?");
   if (yesLower==true) {
-    criteria.push(alphaBet.toLowerCase()); /* this will push the alphabet to the criteria */
+    criteria.push(alphaBet.toLowerCase()); /* this will push the alphabet lowercase to the criteria */
   }
 
   var yesUpper = confirm("Do you want upper case letters?");
   if (yesUpper==true) {
-    criteria.push(alphaBet.toUpperCase());
+    criteria.push(alphaBet.toUpperCase()); /* this will push the alphabet upper case to the criteria */
   }
   var yesNums = confirm("Do you want numbers?");
   if (yesNums==true) {
-    criteria.push(nums);
+    criteria.push(nums); /* this will push the nums to the criteria */
   }
   var yesSpecial = confirm("Do you want special characters?");
   if (yesSpecial==true) {
-    criteria.push(specialChars);
+    criteria.push(specialChars); /* this will push the specialchars to the criteria */
   }
 
   /* if user chooses no criteria they will be asked to start again */
